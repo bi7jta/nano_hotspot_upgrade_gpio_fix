@@ -8,3 +8,7 @@ rpi-rw&&curl -OL https://raw.github.com/VR2VYE/rc/master/rc.sh&&chmod +x rc.sh&&
 
 重启.  
 
+如果不能正常工作，使用直接修改脚本的方法：
+
+http://mmdvm.bi7jta.org/2018/04/test-first-blogger.html
+
