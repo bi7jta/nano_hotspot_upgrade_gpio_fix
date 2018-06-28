@@ -4,7 +4,7 @@ http://pi-star/admin/expert/ssh_access.php
 用户名： pi-star  
 密码： raspberry   
 
-设置可写模式，命令行执行：
+设置可写模式，命令行执行：  
 rpi-rw
 
 2）   
