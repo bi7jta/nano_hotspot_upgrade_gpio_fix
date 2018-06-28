@@ -4,6 +4,9 @@ http://pi-star/admin/expert/ssh_access.php
 用户名： pi-star  
 密码： raspberry   
 
+设置可写模式，命令行执行：
+rpi-rw
+
 2）   
 编辑 rc.local文件， 执行（Ctrl+C  Ctrl+V，回车即可)   
 sudo nano /etc/rc.local  
