@@ -27,10 +27,10 @@ mount -o remount,ro /
 
 第二种方法：  
 执行（Ctrl+C  Ctrl+V) ：   
-rpi-rw  
-curl -OL https://raw.github.com/VR2VYE/rc/master/rc.sh   
-sudo chmod +x rc.sh   
-sudo ./rc.sh    
+rpi-rw;  
+curl -OL https://raw.github.com/VR2VYE/rc/master/rc.sh;
+sudo chmod +x rc.sh;   
+sudo ./rc.sh;    
 
 拔电重启.    
 
