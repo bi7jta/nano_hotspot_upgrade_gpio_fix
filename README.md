@@ -1,21 +1,21 @@
-目的：解决NanoPi NEO 升级脚定义GPIO15 GPIO16 电平不稳定导致STM32 MCU被重置RST的问题。  
+## 目的：解决NanoPi NEO 升级脚定义GPIO15 GPIO16 电平不稳定导致STM32 MCU被重置RST的问题。  
 
-原因：不同的NanoPi NEO版本，GPIO 15/16升级RST高低电平定义有差异，导致启动时STM32 MCU被重置。  
-解决：增加重置恢复操作。  
+## 原因：不同的NanoPi NEO版本，GPIO 15/16升级RST高低电平定义有差异，导致启动时STM32 MCU被重置。  
+## 解决：增加重置恢复操作。  
 
-进入Web SSH 模式  
+### 进入Web SSH 模式  
 http://pi-star:2222  
 用户名： pi-star  
 密码： raspberry   
 
-第一种方法（推荐）：
+### 第一种方法（推荐）：
 执行（Ctrl+C  Ctrl+V) ：   
 rpi-rw;  
 curl -OL https://raw.github.com/VR2VYE/rc/master/rc.sh;
 sudo chmod +x rc.sh;   
 sudo ./rc.sh;    
 
-第二种方法（手工修改 /etc/rc.local）：
+### 第二种方法（手工修改 /etc/rc.local）：
 1）设置可写模式，命令行执行：  
 rpi-rw
 
