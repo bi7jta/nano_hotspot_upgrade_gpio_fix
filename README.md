@@ -19,11 +19,13 @@ curl -OL https://raw.github.com/VR2VYE/rc/master/rc.sh;
 sudo chmod +x rc.sh;   
 sudo ./rc.sh;    
 
-### Method 2th (Manual add scipt to /etc/rc.local):   
-1) set write mode:   
+### Method 2th (Manual add scipt to /etc/rc.local)  
+1,   
+set write mode:   
 rpi-rw;sudo nano /etc/rc.local  
  
-2) add the follow fragment before  " exit 0 ", use Ctrl+C，Ctrl+V,  
+2,  
+add the follow fragment before  " exit 0 ", use Ctrl+C，Ctrl+V,  
 
 mount -o remount,rw /  
 echo 3 > /sys/class/gpio/export  
@@ -32,13 +34,13 @@ echo 1 > /sys/class/gpio/gpio3/value
 echo 3 > /sys/class/gpio/unexport  
 mount -o remount,ro /  
 
-3）   
+3,     
 Ctrl+X save the modify and reboot ( disconnect power and reboot again)  
 
 ### Mothod 3th 
 Use the Pi-Star Image have complete fix.
 
-NOTE: 
+NOTE:  
 If you NanoPi NEO do not have this problem, this script sometime will prevent MMDVM HAT firmware entry into normal status.     
 So if you have find this fragment in your rc.local ,remove it then disconnect power and reboot again.  
 cat /etc/rc.local   #Check the fragment at the end of file.   
