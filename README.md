@@ -37,8 +37,8 @@ mount -o remount,ro /
 3,     
 Ctrl+X save the modify and reboot ( disconnect power and reboot again)  
 
-### Mothod 3th 
-Use the Pi-Star Image have complete fix.
+### Method 3th 
+Use the Pi-Star Image have complete fix.download url bi7jta@gmail.com
 
 NOTE:  
 If you NanoPi NEO do not have this problem, this script sometime will prevent MMDVM HAT firmware entry into normal status.     
