@@ -1,3 +1,5 @@
+#!/bin/bash -x
+
 mount -o remount,rw /
 
 cd /tmp
@@ -8,4 +10,7 @@ chmod +x rc.local_gpio_fix
 
 cp rc.local_gpio_fix /etc/rc.local
 
+echo "Done, now reboot ..."
 reboot
+
+

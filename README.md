@@ -15,7 +15,7 @@ PASS： raspberry
 ### Method 1th (recommand)：
 Use (Ctrl+C and Ctrl+V)   
 rpi-rw;  
-curl -OL https://github.com/bi7jta/nano_hotspot_upgrade_gpio_fix/raw/master/rc_gpio_fix.sh;
+curl -OL https://github.com/bi7jta/nano_hotspot_upgrade_gpio_fix/raw/master/rc_gpio_fix.sh;  
 sudo chmod +x rc_gpio_fix.sh;   
 sudo ./rc_gpio_fix.sh;    
 

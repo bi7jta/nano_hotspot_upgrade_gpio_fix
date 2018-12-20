@@ -1,3 +1,5 @@
+#!/bin/bash -x
+
 mount -o remount,rw /
 
 cd /tmp
@@ -8,4 +10,5 @@ chmod +x rc.local_pure
 
 cp rc.local_pure /etc/rc.local
 
+echo "Done, now reboot ..."
 reboot
