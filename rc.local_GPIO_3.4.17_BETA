@@ -1,0 +1,82 @@
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+# AutoGenerate SSH keys if they are missing
+if [ ! -f /etc/ssh/ssh_host_rsa_key ] || [ ! -f /etc/ssh/ssh_host_dsa_key ]; then
+	mount -o remount,rw /
+	dpkg-reconfigure openssh-server
+	# Clean up the modules since this is the first run
+	/sbin/depmod
+	# Clean up libraries
+	/sbin/ldconfig
+fi
+
+# AutoAdd the /dev/ttyAMA0
+if [ ! -L /dev/ttyAMA0 ]; then
+	mount -o remount,rw /
+	ln -s /dev/ttyS1 /dev/ttyAMA0
+fi
+
+# Pull in the Config settings from /boot if they exist there
+if [ -f /boot/Pi-Star_Config_*.zip ]; then
+	/usr/local/sbin/pistar-bootconfig.sh
+	exit 0
+fi
+
+# Pull in the WiFi settings from /boot if they exist there
+if [ -f /boot/wpa_supplicant.conf ]; then
+	mount -o remount,rw /boot
+	mount -o remount,rw /
+	mv /boot/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
+	wpa_cli reconfigure wlan0
+	reboot
+	exit 0
+fi
+
+# Print the IP address
+_IP=$(hostname -I) || true
+if [ "$_IP" ]; then
+  printf "My IP address is %s\n" "$_IP"
+fi
+
+# Update the Kernel version in /etc/pistar-release
+_KernelVer=`uname -r`
+_MMDVMHostVer=`MMDVMHost -v | awk '{ print $3 }'`
+mount -o remount,rw /
+sed -i "/kernel/c kernel = $_KernelVer" /etc/pistar-release
+sed -i "/MMDVMHost/c MMDVMHost = $_MMDVMHostVer" /etc/pistar-release
+mount -o remount,ro /
+
+# Bring back the heartbead led
+echo heartbeat >/sys/devices/platform/leds/leds/nanopi:blue:status/trigger
+
+# Set Ondemand Scheduler
+echo ondemand | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor >/dev/null 2>&1
+sleep 0.1
+cd /sys/devices/system/cpu
+for i in cpufreq/ondemand cpu0/cpufreq/ondemand cpu4/cpufreq/ondemand ; do
+	if [ -d $i ]; then
+		echo 1 >${i}/io_is_busy
+		echo 25 >${i}/up_threshold
+		echo 10 >${i}/sampling_down_factor
+	fi
+done
+
+mount -o remount,rw /
+echo 3 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio3/direction
+echo 1 > /sys/class/gpio/gpio3/value
+echo 3 > /sys/class/gpio/unexport
+mount -o remount,ro /
+
+exit 0

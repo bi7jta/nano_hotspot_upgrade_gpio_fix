@@ -12,7 +12,9 @@ http://pi-star:2222
 Login:  pi-star  
 Pass： raspberry   
 
-Fix GPIO not release the RESET status   
+#### Fix GPIO not release the RESET status   
+
+for Pi-Star V3.4.16  
 
 ```
 rpi-rw;  
@@ -30,10 +32,21 @@ echo 1 > /sys/class/gpio/gpio3/value
 echo 3 > /sys/class/gpio/unexport  
 mount -o remount,ro /  
 ``` 
+NOTE: rc.local file base on v3.4.16    
 
-NOTE: rc.local file base on v3.4.16  
-Recovery this file to original    
+for Pi-Star V 3.4.17_BETA and later version  
+```
+rpi-rw;  
+curl -OL https://github.com/bi7jta/nano_hotspot_upgrade_gpio_fix/raw/master/rc_GPIO_fix_3.4.17_BETA.sh;  
+sudo chmod +x rc_GPIO_fix_3.4.17_BETA.sh;   
+sudo ./rc_GPIO_fix_3.4.17_BETA.sh;    
+```
+NOTE: rc.local file base on v3.4.17_BETA  
 
+ 
+#### Recovery this file to original   
+ 
+for Pi-Star V3.4.16  
 ```
 rpi-rw;
 curl -OL https://github.com/bi7jta/nano_hotspot_upgrade_gpio_fix/raw/master/rc_pure.sh;
@@ -41,5 +54,14 @@ sudo chmod +x rc_pure.sh;
 sudo ./rc_pure.sh;
 ```
 
+for Pi-Star V 3.4.17_BETA and later version  
+```
+rpi-rw;
+curl -OL https://github.com/bi7jta/nano_hotspot_upgrade_gpio_fix/raw/master/rc_3.4.17_BETA_pure.sh;
+sudo chmod +x rc_3.4.17_BETA_pure.sh;
+sudo ./rc_3.4.17_BETA_pure.sh;
+```
+
 Still have problem, contact bi7jta@gmail.com or 
 Facebook IM https://www.facebook.com/winters.cn  
+BLOG https://mmdvm.bi7jta.org  
