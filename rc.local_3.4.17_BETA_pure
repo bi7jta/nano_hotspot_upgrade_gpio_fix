@@ -72,4 +72,38 @@ for i in cpufreq/ondemand cpu0/cpufreq/ondemand cpu4/cpufreq/ondemand ; do
 	fi
 done
 
+if [ -f /etc/dstar-radio.mmdvmhost ]; then
+        # Figure out what modem on what hardware
+        modem=$(/bin/grep "Hardware" /etc/dstar-radio.mmdvmhost | /usr/bin/awk -F "=" '{print $2}')
+        hardware=$(/bin/cat /proc/cpuinfo | /bin/grep Hardware)
+
+        if [ -f /boot/armbianEnv.txt ]; then
+                overlays=$(/bin/grep "overlays" /boot/armbianEnv.txt | /usr/bin/awk -F "=" '{print $2}')
+        fi
+
+        # If this is a vyehat on a sun8i, we need to do a few things
+        if [ "${modem}" = "mmdvmvyehat" ]; then
+                case ${hardware} in
+                        *sun8i*)
+                                # Modify /boot/arbianEnv.txt and turn off UART2
+                                case ${overlays} in
+                                        *uart2*)
+                                                /bin/mount -o remount,rw /boot
+                                                sed -i 's/ uart2//g' /boot/armbianEnv.txt
+                                                /bin/mount -o remount,ro /boot
+                                                # Since we had to make this change - reboot
+                                                reboot
+                                                exit 0
+                                        ;;
+                                esac
+                                # Change Mode to out only, we dont care about input on this pin
+                                /usr/local/bin/gpio mode 3 out
+                                # Toggle the pin high/low to reset the modem
+                                /usr/local/bin/gpio write 3 1
+                                /usr/local/bin/gpio write 3 0
+                        ;;
+                esac
+        fi
+fi
+
 exit 0
