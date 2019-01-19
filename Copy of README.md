@@ -33,6 +33,16 @@ echo 3 > /sys/class/gpio/unexport
 mount -o remount,ro /  
 ``` 
 NOTE: rc.local file base on v3.4.16    
+
+for Pi-Star V 3.4.17_BETA and later version  
+```
+rpi-rw;  
+curl -OL https://github.com/bi7jta/nano_hotspot_upgrade_gpio_fix/raw/master/rc_GPIO_fix_3.4.17_BETA.sh;  
+sudo chmod +x rc_GPIO_fix_3.4.17_BETA.sh;   
+sudo ./rc_GPIO_fix_3.4.17_BETA.sh;    
+```
+NOTE: rc.local file base on v3.4.17_BETA  
+
  
 #### Recovery this file to original   
  
@@ -43,7 +53,14 @@ curl -OL https://github.com/bi7jta/nano_hotspot_upgrade_gpio_fix/raw/master/rc_p
 sudo chmod +x rc_pure.sh;
 sudo ./rc_pure.sh;
 ```
- 
+
+for Pi-Star V 3.4.17_BETA and later version  
+```
+rpi-rw;
+curl -OL https://github.com/bi7jta/nano_hotspot_upgrade_gpio_fix/raw/master/rc_3.4.17_BETA_pure.sh;
+sudo chmod +x rc_3.4.17_BETA_pure.sh;
+sudo ./rc_3.4.17_BETA_pure.sh;
+```
 
 Still have problem, contact bi7jta@gmail.com or 
 Facebook IM https://www.facebook.com/winters.cn  
