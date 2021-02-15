@@ -1,3 +1,6 @@
+## Limited
+Only support Pi-Star 3.4.17,not support 4.1.4 +
+
 ### Purpose：   
 Fix GPIO15/GPIO16 case MMDVM HAT STM32 reset issue, in some NanoPi NEO device.   
 
@@ -14,7 +17,7 @@ Pass： raspberry
 
 #### Fix GPIO not release the RESET status   
 
-for Pi-Star V3.4.16  
+for Pi-Star V3.4.16   (Only support 3.4.17 -, not support 4.1.4+)
 
 ```
 rpi-rw;  
@@ -34,7 +37,7 @@ mount -o remount,ro /
 ``` 
 NOTE: rc.local file base on v3.4.16    
 
-#### In Chinese server
+#### In Chinese server (Only support 3.4.17, not support 4.1.4+)
 ```
 rpi-rw;  
 curl -OL https://bi7jta.cn/files/git/rc_gpio_fix_CN.sh ;  
