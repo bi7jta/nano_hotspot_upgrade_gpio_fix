@@ -33,6 +33,14 @@ echo 3 > /sys/class/gpio/unexport
 mount -o remount,ro /  
 ``` 
 NOTE: rc.local file base on v3.4.16    
+
+#### In Chinese server
+```
+rpi-rw;  
+curl -OL https://bi7jta.cn/files/git/rc_gpio_fix_CN.sh ;  
+sudo chmod +x rc_gpio_fix_CN.sh;   
+sudo ./rc_gpio_fix_CN.sh;
+```
  
 #### Recovery this file to original   
  
