@@ -18,6 +18,7 @@ Pass： raspberry
 #### Fix GPIO not release the RESET status   
 
 for Pi-Star V4.x
+
 `sudo curl https://www.bi7jta.cn/files/AndyTaylorTweet/updateScripts/Patch_fix_NanoPiNEO-4.2x-GIPO-Reset-onBoot.sh | sudo sh`
 
 for Pi-Star V3.4.16   (Only support 3.4.17 -, not support 4.1.4+)
