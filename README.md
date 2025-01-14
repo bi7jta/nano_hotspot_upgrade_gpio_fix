@@ -21,6 +21,11 @@ for Pi-Star V4.x
 
 `sudo curl https://www.bi7jta.cn/files/AndyTaylorTweet/updateScripts/Patch_fix_NanoPiNEO-4.2x-GIPO-Reset-onBoot.sh | sudo sh`
 
+
+![run-NEO-gpio-fix](https://github.com/user-attachments/assets/ffbc6b37-9998-4837-9c39-0aa95c0b3e11)
+
+
+
 for Pi-Star V3.4.16   (Only support 3.4.17 -, not support 4.1.4+)
 ```
 rpi-rw;  
