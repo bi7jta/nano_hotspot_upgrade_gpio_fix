@@ -1,5 +1,5 @@
 ## Limited
-Only support Pi-Star 3.4.17,not support 4.1.4 +
+Pi-Star 3.x and support 4.x , not use the same script, please choose your current version or flash the new version.
 
 ### Purpose：   
 Fix GPIO15/GPIO16 case MMDVM HAT STM32 reset issue, in some NanoPi NEO device.   
